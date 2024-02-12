@@ -40,11 +40,15 @@ class LoginView extends GetView<LoginController> {
                 ),
                 Text(
                   'Welcome to',
-                  style: TextStyle(fontSize: 20, color: Color(0xFF22215B)),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Color(0xFF22215B),
+                  ),
                 ),
                 Text(
                   'Dirbbox',
                   style: TextStyle(
+                      fontFamily: 'Gilroy',
                       fontSize: 38,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF22215B)),

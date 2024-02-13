@@ -18,7 +18,10 @@ class ProfileView extends GetView<ProfileController> {
               color: Color(0xFF22215B)),
           title: const Text(
             'My Profile',
-            style: TextStyle(color: Color(0xFF22215B)),
+            style: TextStyle(
+                color: Color(0xFF22215B),
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
@@ -105,7 +108,7 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   Container(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(onPressed: () {}, icon: Icon(Icons.add)),
                         IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
@@ -117,8 +120,53 @@ class ProfileView extends GetView<ProfileController> {
                   )
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CardFolder(
+                    image: Image.asset('assets/icons/folder_415EB6.png'),
+                    title: 'Mobile Apps',
+                    date: 'December 20.2020',
+                    color: Color(0xff415EB6),
+                  ),
+                ],
+              ),
+            ),
           ],
         ));
+  }
+}
+
+class CardFolder extends StatelessWidget {
+  CardFolder({
+    super.key,
+    required this.title,
+    required this.date,
+    required this.color,
+    required this.image,
+  });
+
+  final String title;
+  final String date;
+  final Color color;
+  final Image image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 115,
+      width: 160,
+      decoration: BoxDecoration(
+          color: Color(0xFFEEF7FE), borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        children: [image],
+      ),
+    );
   }
 }

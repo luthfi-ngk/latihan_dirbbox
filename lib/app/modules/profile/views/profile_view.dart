@@ -130,14 +130,85 @@ class ProfileView extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CardFolder(
-                    image: Image.asset('assets/icons/folder_415EB6.png'),
+                    image: Image.asset('assets/icons/folder-415EB6.png'),
+                    icon: Image.asset('assets/icons/more-blue.png'),
                     title: 'Mobile Apps',
                     date: 'December 20.2020',
                     color: Color(0xff415EB6),
                   ),
+                  CardFolder(
+                    image: Image.asset('assets/icons/folder-FFB110.png'),
+                    icon: Image.asset('assets/icons/more-yellow.png'),
+                    title: 'SVG Icons',
+                    date: 'December 20.2020',
+                    color: Color(0xffFFB110),
+                  ),
                 ],
               ),
             ),
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CardFolder(
+                    image: Image.asset('assets/icons/folder-AC4040.png'),
+                    icon: Image.asset('assets/icons/more-red.png'),
+                    title: 'Prototypes',
+                    date: 'November 22.2020',
+                    color: Color(0xffAC4040),
+                  ),
+                  CardFolder(
+                    image: Image.asset('assets/icons/folder-23B0B0.png'),
+                    icon: Image.asset('assets/icons/more-green.png'),
+                    title: 'Avatars',
+                    date: 'November 22.2020',
+                    color: Color(0xff23B0B0),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Recent Uploads',
+                    style: TextStyle(
+                        color: Color(0xFF22215B),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Image.asset('assets/icons/sort.png'),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ListTile(
+                leading: Container(
+                    width: 50,
+                    height: 50,
+                    child: Image.asset(
+                      'assets/icons/word.png',
+                      fit: BoxFit.cover,
+                    )),
+                title: Text(
+                  'Projects.docx',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF22215B)),
+                ),
+                subtitle:
+                    Text('November 22.2020', style: TextStyle(fontSize: 11)),
+                trailing: Text('300kb'),
+              ),
+            )
           ],
         ));
   }
@@ -150,22 +221,48 @@ class CardFolder extends StatelessWidget {
     required this.date,
     required this.color,
     required this.image,
+    required this.icon,
   });
 
   final String title;
   final String date;
   final Color color;
   final Image image;
+  final Image icon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 115,
+      padding: EdgeInsets.all(20),
+      height: 120,
       width: 160,
       decoration: BoxDecoration(
-          color: Color(0xFFEEF7FE), borderRadius: BorderRadius.circular(20)),
+          color: color.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(20)),
       child: Column(
-        children: [image],
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              image,
+              icon,
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 15, fontWeight: FontWeight.w600, color: color),
+          ),
+          Text(
+            date,
+            style: TextStyle(fontSize: 10, color: color),
+          )
+        ],
       ),
     );
   }
